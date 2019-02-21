@@ -1,0 +1,22 @@
+pcm.!default {
+    type asym
+    playback.pcm {
+        type plug
+        slave.pcm "hw:0,0"
+    }
+    capture.pcm "multi"
+}
+
+pcm.multi {
+    type plug
+    slave.pcm "multiapps"
+}
+
+pcm.multiapps {
+    type dsnoop
+    slave.pcm "hw:1,0"
+    ipc_key 666666
+    slave.format S16_LE
+}
+
+
